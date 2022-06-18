@@ -1,0 +1,74 @@
+var ScriptName = "날먹";
+var FS = FileStream; 
+var master;
+var master_img;
+var curRoom;
+var curUser;
+var DoingLogin = false;
+
+function response(room, msg, sender, isGroupChat, replier, imageDB, packageName, isOriginal) {
+    if(DoingLogin && curRoom == room && curUser == sender)
+    {
+        DoingLogin = false;
+        if(msg == key) // 보낸 메시지와 키가 같다면
+        {
+            replier.reply("새곰이 ㅎㅇ");
+            master = sender;
+            master_img = imageDB.getProfileImage();
+            return
+        }
+        else
+        {
+            replier.reply("비밀번호가 틀렸습니다.");
+            return;
+        }
+    }    
+    else if(msg== "!새곰이권한") // !로그인이라고 입력했을 시
+    {
+        key=Math.floor(Math.random()*9000)+1000;
+        Api.showToast(key); // 봇을 사용중인 폰에 Toast를 띄워 키를 확인한다
+        Api.replyRoom("주인",key);
+        //replier.reply(key)
+        replier.reply("비밀번호를 입력해주세요.");
+        DoingLogin = true;
+        curRoom = room;
+        curUser = sender;
+        return;
+    }
+    
+if (msg.startsWith("생성")){ //만약 메시지가 CreateFile로 시작한다면
+
+  if(master != sender && imageDB.getProfileImage() != master_img)
+  {
+    replier.reply("당신은 새곰이가 아닙니다!");
+    return;
+  }
+    var msgsplit1 = msg.split("@")[1]; // /다음의 메시지를 msgsplit1로 설정 (제목)
+
+    // var msgsplit2 = msg.split("@")[2]; // /다음 다음(?)의 메시지를 msgsplit2로 설정 (내용)
+
+    var url = "https://raw.githubusercontent.com/doll7477/1/master/"+msgsplit1;
+    
+    var newpath = "sdcard/msgbot/bots/" +ScriptName+ "/DB/" +msgsplit1+".txt"; //저장할 위치를 sdcard/제목 으로 설정
+   
+    data = org.jsoup.Jsoup.connect(url).get().wholeText();
+    
+    
+    FS.write(newpath, data); //newpath라는 위치에 msgsplit2(내용)을 저장
+
+    replier.reply("파일이 저장되었습니다.\n파일명 : "+msgsplit1+"\n파일 내용 : "+data); //파일명과 파일 내용을 말해줌
+
+  }
+
+  if (msg.startsWith("@")){ 
+    
+
+    var msgstring = msg.substring(1); //찾을 파일의 제목 (글자에서 9칸만큼 간후 그 뒤에있는 글자 전부)
+
+    var newpath = "sdcard/msgbot/bots/" +ScriptName+ "/DB/" +msgstring+".txt"; //찾을 파일의 위치를 설정
+
+    replier.reply(FS.read(newpath)); //찾은 파일 제목과 내용을 보여줌
+
+  }  
+}
+-
