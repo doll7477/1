@@ -36,8 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName,
         return;
     }
     
-if (msg.startsWith("생성")){ //만약 메시지가 CreateFile로 시작한다면
-
+if (msg.startsWith("생성")){ //만약 메시지가 CreateFile로 시작한다면ㅇ
   if(master != sender && imageDB.getProfileImage() != master_img)
   {
     replier.reply("당신은 새곰이가 아닙니다!");
@@ -71,4 +70,3 @@ if (msg.startsWith("생성")){ //만약 메시지가 CreateFile로 시작한다�
 
   }  
 }
--
