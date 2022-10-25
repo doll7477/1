@@ -1,5 +1,5 @@
 /**
-git원격수정
+git
 **/
 const probability = num => (num >= (Math.random() * 100 | 0) + 1) ? true : false;
 const more = "​".repeat(500);
@@ -252,6 +252,7 @@ if(r == s && !iGC && msg == '가입확인'){
     replier.reply('• 서버가 재시작되었어요. 기존 방에서 다시 "가입"을 입력해 주세요.');
     return;
 }*/
+}
 
 
 /** 작동방 확인 **/
