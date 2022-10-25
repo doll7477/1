@@ -1,5 +1,8 @@
 /**
-@git수정
+@ git수정
+@ git수정
+@ git수정
+@ git수정
 **/
 const probability = num => (num >= (Math.random() * 100 | 0) + 1) ? true : false;
 const more = "​".repeat(500);
