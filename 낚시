@@ -1,9 +1,5 @@
 /**
-@ Made by kyuya
-@ Web URL ---  http://kyuya.kr
-@ E-mail ---  1kyu@kakao.com
-@ kakao URL ---  https://open.kakao.com/o/gz8R7IRd
-@ ---  비영리목적 수정 허용, 재배포 및 제작자사칭 금지.
+
 **/
 const probability = num => (num >= (Math.random() * 100 | 0) + 1) ? true : false;
 const more = "​".repeat(500);
