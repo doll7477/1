@@ -1,3 +1,17 @@
+function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
+  if (msg.startsWith('/G ')) {
+
+    if (msg.substr(3).toUpperCase() === 'RESET') {
+      Chat = {};
+      replier.reply('Reset 되었습니다.');
+    }
+    else {
+      replier.reply(chatgpt(msg.substr(3).trim(), room));
+    }
+
+  }
+}
+
 var FS = FileStream; 
 var path = "sdcard/msgbot/bots/GPT/API_KEY.txt"
 var Chat = {};
