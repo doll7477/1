@@ -15,7 +15,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 
 var Chat = {};
 const CHAT_LENGTH = 10;
-const API_KEY = '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';
+const API_KEY = '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';
 
 function chatgpt(msg, room) {
   try {
